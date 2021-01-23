@@ -15,11 +15,18 @@ export class LoginPageComponent implements OnInit {
   
   loginForm: FormGroup = new FormGroup({});
 
+
+  subscribes: Subscription[] = [];
+
   constructor(private loginData: LoginDataService, 
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.formInit();
+  }
+
+  ngOnDestroy(){
+    this.subscribes.forEach(s => s.unsubscribe());
   }
 
   formInit(){
