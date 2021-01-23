@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoadingComponent } from './components';
+
+import { LoadingComponent,
+         NavComponent } from './components';
+         
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    LoadingComponent
+    LoadingComponent,
+    NavComponent
   ],
   providers: [],
   exports: [
-    LoadingComponent
+    LoadingComponent,
+    NavComponent
   ]
 })
 
