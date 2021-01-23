@@ -11,6 +11,7 @@ import { LoadingComponent } from './components';
   ],
   providers: [],
   exports: [
+    LoadingComponent
   ]
 })
 
