@@ -12,7 +12,7 @@ export class UserGuardService implements CanActivate{
     let token = localStorage.getItem('token')
 
     if(!token){
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
       return false;
     }
     
