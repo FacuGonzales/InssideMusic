@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { LoadingComponent,
          NavComponent } from './components';
+import { SharedRoutingModule } from './shared-routing.module';
          
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedRoutingModule
   ],
   declarations: [
     LoadingComponent,
