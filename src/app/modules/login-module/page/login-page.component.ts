@@ -44,9 +44,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   login(){
     this.loading = true;
 
-    this.userLogin.grant_type = 'client_credentials';
-    this.userLogin.client_id = (this.loginForm.get('userName')?.value && this.loginForm.get('userName')?.value == 'test') ? '23b9d5b2231c402893c3eadfd0e59d0e' : this.loginForm.get('userName')?.value;
-    this.userLogin.client_secret = (this.loginForm.get('password')?.value && this.loginForm.get('password')?.value == '1234') ? '5a867cfcf25d4a53b77ccab27d5d0b1b' : this.loginForm.get('password')?.value;
+    this.userLogin.grant_type = '';
+    this.userLogin.client_id = this.loginForm.get('userName')?.value
+    this.userLogin.client_secret = this.loginForm.get('password')?.value
 
     this.subscribes.push(this.loginData.login(this.userLogin).subscribe(
       resp => {
