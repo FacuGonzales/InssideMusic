@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ILoginDto } from '../models/login-dto';
 import { LoginDataService } from '../services/login-data.service';
@@ -20,7 +22,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   subscribes: Subscription[] = [];
 
   constructor(private loginData: LoginDataService, 
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private router: Router,
+              private alert: ToastrService) { }
 
   ngOnInit(): void {
     this.formInit();
@@ -38,18 +42,33 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   login(){
+    this.loading = true;
+
     this.userLogin.grant_type = 'client_credentials';
     this.userLogin.client_id = (this.loginForm.get('userName')?.value && this.loginForm.get('userName')?.value == 'test') ? '23b9d5b2231c402893c3eadfd0e59d0e' : this.loginForm.get('userName')?.value;
     this.userLogin.client_secret = (this.loginForm.get('password')?.value && this.loginForm.get('password')?.value == '1234') ? '5a867cfcf25d4a53b77ccab27d5d0b1b' : this.loginForm.get('password')?.value;
 
     this.subscribes.push(this.loginData.login(this.userLogin).subscribe(
       resp => {
-        if(resp){
-          console.log(resp)
-        }else{
-          console.log(resp)
+
+        if(!resp) {
+          this.loading = false;
+          this.alert.error(resp.message);
+          return
         }
-      },err => console.log(err)
+
+        this.loading = false;
+        this.alert.success('Bienvenido de nuevo!');
+
+        localStorage.setItem('token', resp.access_token);
+        localStorage.setItem('token-type', resp.token_type);
+
+        this.router.navigate(['/home']);
+
+      },error => {
+        this.loading = false;
+        this.alert.error(error.error.error_description);
+      }
     ))
 
   }
