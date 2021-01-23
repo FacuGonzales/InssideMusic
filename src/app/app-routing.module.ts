@@ -12,7 +12,7 @@ const routes: Routes = [
     canActivate: [NoUserGuardService]
   },
   { 
-    path: '', 
+    path: 'home', 
     loadChildren: () => import('./modules/home-module/home.module').then(m => m.HomeModule), 
     canActivate: [UserGuardService]
   },
