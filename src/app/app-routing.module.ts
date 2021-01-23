@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/login-module/login.module').then(m => m.LoginModule), 
     canActivate: [NoUserGuardService]
   },
+  { 
+    path: '', 
+    loadChildren: () => import('./modules/home-module/home.module').then(m => m.HomeModule), 
+    canActivate: [UserGuardService]
+  },
   {
     path: '**', redirectTo: defaultPathApp
   }
