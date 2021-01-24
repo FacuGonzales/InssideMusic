@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { INewReleaseDto } from '../models/new-release-dto';
 import { HomeDataService } from '../services/home-data.service';
 
@@ -11,7 +12,8 @@ export class HomePageComponent implements OnInit {
 
   newReleaseList: INewReleaseDto[] = [];
 
-  constructor(private homeData: HomeDataService) { }
+  constructor(private homeData: HomeDataService,
+              private alert: ToastrService) { }
 
   ngOnInit(): void {
     this.getNewRelease();
@@ -22,9 +24,8 @@ export class HomePageComponent implements OnInit {
       resp => {
         if(resp){
           this.newReleaseList = resp.albums.items;
-          console.log(this.newReleaseList);
         }
-      }
+      },err => this.alert.error(err)
     )
   }
 }
