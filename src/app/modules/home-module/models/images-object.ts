@@ -1,4 +1,4 @@
-export interface IImagesDto {
+export interface ImageObject {
     height?: number,
     url?: string,
     width?: number
