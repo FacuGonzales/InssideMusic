@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home-module/home.module').then(m => m.HomeModule), 
     canActivate: [UserGuardService]
   },
+  { 
+    path: 'search', 
+    loadChildren: () => import('./modules/search-module/search.module').then(m => m.SearchModule), 
+    canActivate: [UserGuardService]
+  },
   {
     path: '**', redirectTo: defaultPathApp
   }
