@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { NavComponent } from 'src/app/shared/components';
 import { PlaylistObject } from '../models/playlist-object';
 import { PlaylistTrackObject } from '../models/playlist-track-object';
 import { SimplifiedAlbumObject } from '../models/simplified-album-object';
@@ -40,6 +41,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   subscribes: Subscription[] = [];
 
+  @ViewChild(NavComponent) navComponent!: NavComponent;
+  
   constructor(private homeData: HomeDataService,
               private alert: ToastrService,
               private fb: FormBuilder,
@@ -81,7 +84,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
           this.newReleaseList = resp.albums.items;
         }
       },err => {
-        this.logOut();
+        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
+        this.navComponent.logOut();
       }
     )
   }
@@ -373,11 +377,4 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.getTopPlayList(limit, pais);
   }
 
-  logOut(){
-    this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.')
-    localStorage.removeItem('token');
-    localStorage.removeItem('token-type');
-
-    this.router.navigate(['/']);
-  }
 }
