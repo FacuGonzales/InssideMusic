@@ -71,4 +71,46 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     });        
   }
 
+  getItem(item: string, types:string){
+    let type = (this.typeSelected && this.typeSelected == 'artist') ? 'artists' : 
+               (this.typeSelected && this.typeSelected == 'album') ? 'albums' :
+               (this.typeSelected && this.typeSelected == 'track') ? 'tracks' : '';
+               
+    this.subscribes.push(this.searchData.searchAnItem(item, types).subscribe(
+      resp => {
+        if(resp){
+          this.searchResult = resp;
+
+          switch(type){
+            case 'artists':
+              this.itemsArtists = resp[type].items;
+              this.itemsAlbum = [];
+              this.itemsTracks = [];
+              break;
+
+            case 'albums':
+              this.itemsAlbum = resp[type].items;
+              this.itemsArtists = [];
+              this.itemsTracks = [];
+              break;
+
+            case 'tracks':
+              this.itemsTracks = resp[type].items;
+              this.itemsArtists = [];
+              this.itemsAlbum = [];
+              break;
+
+            break;
+          }
+
+          this.getFavorites();
+          
+        }
+       
+      },err => {
+        this.logOut();
+      }
+    ))
+  }
+
 }
