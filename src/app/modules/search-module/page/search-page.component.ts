@@ -53,5 +53,22 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.subscribes.forEach(s => s.unsubscribe());
   }
 
+  formSubscribe(){
+    this.searchForm.valueChanges.subscribe( value => {
+      this.itemSelected = value 
+
+      if(this.itemSelected.length > 3){
+        this.getItem(this.itemSelected, this.typeSelected)
+      }
+    });
+
+    this.typeForm.valueChanges.subscribe(_type => {
+      this.typeSelected = _type;
+
+      if(this.itemSelected.length > 3){
+        this.getItem(this.itemSelected, this.typeSelected)
+      }
+    });        
+  }
 
 }
