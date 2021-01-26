@@ -49,5 +49,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.formSubscribe()
   }
 
+  ngOnDestroy(){
+    this.subscribes.forEach(s => s.unsubscribe());
+  }
+
 
 }
