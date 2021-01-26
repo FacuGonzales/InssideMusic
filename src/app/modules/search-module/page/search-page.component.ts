@@ -189,5 +189,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.getFavorites();
   }
 
+  viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
+    this.router.navigate(['/info/', value.id, value.type]);
+  }
+
 
 }
