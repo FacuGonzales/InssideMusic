@@ -13,4 +13,5 @@ export interface ArtistObject{
     popularity?: number,
     type?: string,
     uri?: string
+    favorito?: boolean,
 }

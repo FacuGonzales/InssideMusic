@@ -24,5 +24,6 @@ export interface TrackObject{
     restrictions?: TrackRestrictionObject,
     track_number?: number,
     type?: string,
-    uri?: string
+    uri?: string,
+    favorito?: boolean,
 }

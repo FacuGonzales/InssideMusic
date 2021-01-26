@@ -19,4 +19,5 @@ export interface SimplifiedAlbumObject {
     total_tracks?: number,
     type?: string,
     uri?: string,
+    favorito?: boolean,
 }
