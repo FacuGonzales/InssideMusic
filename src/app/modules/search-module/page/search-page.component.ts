@@ -113,4 +113,67 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     ))
   }
 
+  getFavorites(){
+    let _localStorage = JSON.parse(localStorage.getItem('Favoritos') || '[]');
+    if(_localStorage == null) _localStorage = [];
+    
+    this.favorites = _localStorage;
+
+    // Recorro cada array de items (Artistas, Albums y Tracks) y seteo 'Favorito' en falso
+    this.itemsArtists.forEach(r => r.favorito = false)
+    this.itemsTracks.forEach(r => r.favorito = false)
+    this.itemsAlbum.forEach(r => r.favorito = false)
+
+    // Recorro todos mis favoritos
+    if(this.favorites.length){
+      this.favorites.forEach( f => {
+        
+        // Reviso si existen resultados dentro de Artistas
+        if(this.itemsArtists.length){
+          // Recorro los items de artistas obtenidos
+          this.itemsArtists.forEach( a => {
+            // compruebo si existe alguno igual dentro de mis favoritos
+            if(f.id == a.id){
+              // seteo su propiedad 'favorito' en true
+              a.favorito = true;
+              return
+            }
+          })
+
+          return
+        }
+        
+        // Reviso si existen resultados dentro de Album
+        if(this.itemsAlbum.length){
+          // Recorro los items de albums obtenidos
+          this.itemsAlbum.forEach( a => {
+            // compruebo si existe alguno igual dentro de mis favoritos
+            if(f.id == a.id){
+              // seteo su propiedad 'favorito' en true
+              a.favorito = true;
+              return
+            }
+          })
+
+          return
+        } 
+
+        // Reviso si existen resultados dentro de Tracks
+        if(this.itemsTracks.length){
+          // Recorro los items de Tracks obtenidos
+          this.itemsTracks.forEach( t => {
+            // compruebo si existe alguno igual dentro de mis favoritos
+            if(f.id == t.id){
+              // seteo su propiedad 'favorito' en true
+              t.favorito = true;
+              return
+            }
+          })
+
+          return
+        } 
+      })
+    }
+  }
+
 }
