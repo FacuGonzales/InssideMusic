@@ -59,7 +59,7 @@
 
                             <a href="{{ artista.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
                         
-                            <span *ngIf="artista.favorito"><i class="bi bi-star-fill" (click)="favorito(artista)"></i></span>
+                            <span *ngIf="artista.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(artista)"></i></span>
                             <span *ngIf="!artista.favorito"><i class="bi bi-star" (click)="favorito(artista)"></i></span>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <p class="card-text">{{ artista.type }}</p>
                         <p class="card-text" (click)="viewInfo(artista)">ver más info</p>
                         <a href="{{artista.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
-                        <span *ngIf="artista.favorito"><i class="bi bi-star-fill" (click)="favorito(artista)"></i></span>
+                        <span *ngIf="artista.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(artista)"></i></span>
                         <span *ngIf="!artista.favorito"><i class="bi bi-star" (click)="favorito(artista)"></i></span>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
 
                             <a href="{{ album.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
                         
-                            <span *ngIf="album.favorito"><i class="bi bi-star-fill" (click)="favorito(album)"></i></span>
+                            <span *ngIf="album.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(album)"></i></span>
                             <span *ngIf="!album.favorito"><i class="bi bi-star" (click)="favorito(album)"></i></span>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                        
                         <p class="card-text" (click)="viewInfo(album)">ver más info</p>
                         <a href="{{album.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
-                        <span *ngIf="album.favorito"><i class="bi bi-star-fill" (click)="favorito(album)"></i></span>
+                        <span *ngIf="album.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(album)"></i></span>
                         <span *ngIf="!album.favorito"><i class="bi bi-star" (click)="favorito(album)"></i></span>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
 
                             <a href="{{ track.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
                         
-                            <span *ngIf="track.favorito"><i class="bi bi-star-fill" (click)="favorito(track)"></i></span>
+                            <span *ngIf="track.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(track)"></i></span>
                             <span *ngIf="!track.favorito"><i class="bi bi-star" (click)="favorito(track)"></i></span>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                         </h6>
                         <p class="card-text" (click)="viewInfo(track)">ver más info</p>
                         <a href="{{track.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
-                        <span *ngIf="track.favorito"><i class="bi bi-star-fill" (click)="favorito(track)"></i></span>
+                        <span *ngIf="track.favorito"><i class="bi bi-star-fill text-warning" (click)="favorito(track)"></i></span>
                         <span *ngIf="!track.favorito"><i class="bi bi-star" (click)="favorito(track)"></i></span>
                     </div>
                 </div>
