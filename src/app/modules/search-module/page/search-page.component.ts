@@ -1,12 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { NavComponent } from 'src/app/shared/components';
 import { ArtistObject } from '../../home-module/models/artist-object';
 import { PagingObject } from '../../home-module/models/paging-object';
 import { SimplifiedAlbumObject } from '../../home-module/models/simplified-album-object';
 import { TrackObject } from '../../home-module/models/track-object';
+import { LoginPageComponent } from '../../login-module/page';
 import { SearchDataService } from '../services/search-data.service';
 
 @Component({
@@ -40,6 +42,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   favorites: any[]= [];
   
   subscribes: Subscription[] = [];
+
+  @ViewChild(NavComponent) navComponent!: NavComponent;
+
   constructor(private searchData: SearchDataService,
               private alert: ToastrService,
               private router: Router) { }
@@ -108,7 +113,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         }
        
       },err => {
-        this.logOut();
+        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
+        this.navComponent.logOut();
       }
     ))
   }
@@ -193,11 +199,4 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/info/', value.id, value.type]);
   }
 
-  logOut(){
-    this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.')
-    localStorage.removeItem('token');
-    localStorage.removeItem('token-type');
-
-    this.router.navigate(['/']);
-  }
 }
