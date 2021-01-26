@@ -16,6 +16,7 @@ export interface SimplifiedAlbumObject {
     release_date?: string,
     release_date_precision?: string,
     restrictions?: AlbumRestrictionObject,
+    total_tracks?: number,
     type?: string,
     uri?: string,
 }
