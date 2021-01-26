@@ -1,1 +1,245 @@
-<p>search-page works!</p>
+<nav-component></nav-component>
+
+<div class="container">
+    
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <i class="bi bi-search"></i>
+                  </span>
+                </div>
+        
+                <input type="text" class="form-control" 
+                        placeholder="Buscar artistas, canciones, albums" 
+                        [formControl]="searchForm"
+                        autofocus="off">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <select id="inputState" class="form-control"  [formControl]="typeForm">
+                <option *ngFor="let e of type;">{{e}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div> 
+
+        <div *ngIf="!itemsArtists.length && !itemsAlbum.length && !itemsTracks.length">
+            <h5>No se encontraron resultados..</h5>
+        </div>
+
+        <!-- RESULTADOS DE ARTISTAS -->
+        <div *ngIf="itemsArtists.length && !itemsAlbum.length && !itemsTracks.length">
+
+            <h3>Encontramos estos Artistas para ti!</h3>
+
+            <div *ngFor="let artista of itemsArtists; let index = index"> 
+
+                <div *ngIf="index == 0">
+                    <h3>Resultado Principal</h3>
+
+                    <div class="card bg-dark text-white">
+                        <span *ngIf="!artista.images?.length">
+                            <img class="card-img" alt="Card image" src="../../../../assets/img/sinPortada640.png">
+                        </span>
+                        
+                        <div *ngIf="artista.images?.length">
+                            <div *ngFor="let img of artista.images" >
+                                <img class="card-img" *ngIf="img.height == 640" src="{{img.url}}" alt="Card image">
+                            </div>
+                        </div>
+
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">{{ artista.name }}</h5>
+                            <p class="card-text">{{ artista.type }}</p>
+
+                            <p class="card-text" (click)="viewInfo(artista)">ver más info</p>
+
+                            <a href="{{ artista.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        
+                            <span *ngIf="artista.favorito"><i class="bi bi-star-fill" (click)="favorito(artista)"></i></span>
+                            <span *ngIf="!artista.favorito"><i class="bi bi-star" (click)="favorito(artista)"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;" *ngIf="index != 0">
+
+                    <span *ngIf="!artista.images?.length">
+                        <img class="card-img-top" alt="Card image cap" src="../../../../assets/img/sinPortada320.png">
+                    </span>
+
+                    <div *ngIf="artista.images?.length">
+                        <div *ngFor="let img of artista.images">
+                            <img class="card-img-top" alt="Card image cap" 
+                                 *ngIf="img.height == 320 || img.height == 300"
+                                 src="{{ img.url }}">
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <h2>{{ artista.name }}</h2>
+                        <p class="card-text">{{ artista.type }}</p>
+                        <p class="card-text" (click)="viewInfo(artista)">ver más info</p>
+                        <a href="{{artista.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        <span *ngIf="artista.favorito"><i class="bi bi-star-fill" (click)="favorito(artista)"></i></span>
+                        <span *ngIf="!artista.favorito"><i class="bi bi-star" (click)="favorito(artista)"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- RESULTADOS DE ALBUMS -->
+        <div *ngIf="!itemsArtists.length && itemsAlbum.length && !itemsTracks.length">
+
+            <h1>Encontramos estos Albums para ti!</h1>
+
+            <div *ngFor="let album of itemsAlbum; let index = index"> 
+
+                <div *ngIf="index == 0">
+                    <h2>Resultado Principal</h2>
+
+                    <!-- <div class="card bg-dark text-white" *ngFor="let img of album.images"> -->
+
+                    <div class="card bg-dark text-white">
+                        <span *ngIf="!album.images?.length">
+                            <img class="card-img" alt="Card image" src="../../../../assets/img/sinPortada640.png">
+                        </span>
+                        
+                        <div *ngIf="album.images?.length">
+                            <div *ngFor="let img of album.images" >
+                                <img class="card-img" *ngIf="img.height == 640" src="{{img.url}}" alt="Card image">
+                            </div>
+                        </div>
+
+                        <!-- <img class="card-img" *ngIf="img.height == 640" src="{{img.url}}" alt="Card image"> -->
+
+                        <div class="card-img-overlay">
+                            <h3 class="card-title">{{ album.name }} - {{ album.release_date }}</h3>
+
+                            <h5 class="card-text" *ngFor="let artis of album.artists">
+                                <span>{{ artis.name }}</span> 
+                            </h5>
+
+                            <p class="card-text">Canciones: {{ album.total_tracks }}</p>
+
+                            <p class="card-text" (click)="viewInfo(album)">ver más info</p>
+
+                            <a href="{{ album.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        
+                            <span *ngIf="album.favorito"><i class="bi bi-star-fill" (click)="favorito(album)"></i></span>
+                            <span *ngIf="!album.favorito"><i class="bi bi-star" (click)="favorito(album)"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;" *ngIf="index != 0">
+
+                    <span *ngIf="!album.images?.length">
+                        <img class="card-img" alt="Card image" src="../../../../assets/img/sinPortada320.png">
+                    </span>
+
+                    <div *ngIf="album.images?.length">
+                        <div *ngFor="let img of album.images" >
+                            <img class="card-img-top" alt="Card image cap" 
+                                 *ngIf="img.height == 320 || img.height == 300"
+                                 src="{{ img.url }}">
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <h4 class="card-title">{{ album.name }} - {{ album.release_date }}</h4>
+                        <h5 class="card-text" *ngFor="let artis of album.artists">
+                            <span>{{ artis.name }}</span> 
+                        </h5>
+                        <p class="card-text">Canciones: {{ album.total_tracks }}</p>
+                       
+                        <p class="card-text" (click)="viewInfo(album)">ver más info</p>
+                        <a href="{{album.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        <span *ngIf="album.favorito"><i class="bi bi-star-fill" (click)="favorito(album)"></i></span>
+                        <span *ngIf="!album.favorito"><i class="bi bi-star" (click)="favorito(album)"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTADOS DE TRACKS -->
+        <div *ngIf="itemsTracks.length">
+
+            <h1>Encontramos estas Canciones para ti!</h1>
+
+            <div *ngFor="let track of itemsTracks; let index = index"> 
+
+                <div *ngIf="index == 0">
+                    <h2>Resultado Principal</h2>
+
+                    <div class="card bg-dark text-white">
+                        <span *ngIf="!track.album?.images?.length">
+                            <img class="card-img" alt="Card image" src="../../../../assets/img/sinPortada640.png">
+                        </span>
+                        
+                        <div *ngIf="track.album?.images?.length">
+                            <div *ngFor="let img of track.album?.images" >
+                                <img class="card-img" *ngIf="img.height == 640" src="{{img.url}}" alt="Card image">
+                            </div>
+                        </div>
+
+                        <div class="card-img-overlay">
+                            <h3 class="card-title">{{ track.name }}</h3>
+
+                            <h4 class="card-title">Album {{ track.album?.name }} - Lanzamiento {{ track.album?.release_date }}</h4>
+
+                            <h5 class="card-text" *ngFor="let artis of track.artists">
+                                <span>{{ artis.name }}</span> 
+                            </h5>
+
+                            <p class="card-text" (click)="viewInfo(track)">ver más info</p>
+
+                            <a href="{{ track.external_urls?.spotify }}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        
+                            <span *ngIf="track.favorito"><i class="bi bi-star-fill" (click)="favorito(track)"></i></span>
+                            <span *ngIf="!track.favorito"><i class="bi bi-star" (click)="favorito(track)"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;" *ngIf="index != 0">
+
+                    <span *ngIf="!track.album?.images?.length">
+                        <img class="card-img" alt="Card image" src="../../../../assets/img/sinPortada320.png">
+                    </span>
+
+                    <div *ngIf="track.album?.images?.length">
+                        <div *ngFor="let img of track.album?.images" >
+                            <img class="card-img-top" alt="Card image cap" 
+                                 *ngIf="img.height == 320 || img.height == 300"
+                                 src="{{ img.url }}">
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h4 class="card-title">{{ track.name }}</h4>
+                        <h5 class="card-title">Album {{ track.album?.name }} - Lanzamiento {{ track.album?.release_date }}</h5>
+
+                        <h6 class="card-text" *ngFor="let artis of track.artists">
+                            <span>{{ artis.name }}</span> 
+                        </h6>
+                        <p class="card-text" (click)="viewInfo(track)">ver más info</p>
+                        <a href="{{track.external_urls?.spotify}}" target="_blank"><i class="bi bi-play-circle-fill"></i></a>
+                        <span *ngIf="track.favorito"><i class="bi bi-star-fill" (click)="favorito(track)"></i></span>
+                        <span *ngIf="!track.favorito"><i class="bi bi-star" (click)="favorito(track)"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
