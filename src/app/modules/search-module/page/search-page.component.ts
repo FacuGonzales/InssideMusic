@@ -193,5 +193,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/info/', value.id, value.type]);
   }
 
+  logOut(){
+    this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.')
+    localStorage.removeItem('token');
+    localStorage.removeItem('token-type');
 
+    this.router.navigate(['/']);
+  }
 }
