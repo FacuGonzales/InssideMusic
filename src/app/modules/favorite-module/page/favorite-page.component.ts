@@ -64,5 +64,7 @@ export class FavoritePageComponent implements OnInit {
     localStorage.setItem('Favoritos', JSON.stringify(this.favorites));
   }
 
-
+  viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
+    this.router.navigate(['/info/', value.id, value.type]);
+  }
 }
