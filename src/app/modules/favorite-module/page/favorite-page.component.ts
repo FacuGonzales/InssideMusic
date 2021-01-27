@@ -22,5 +22,21 @@ export class FavoritePageComponent implements OnInit {
     this.getFavorites();
   }
 
+  getFavorites(){
+    let _localStorage = JSON.parse(localStorage.getItem('Favoritos') || '[]');
+    if(_localStorage == null) _localStorage = [];
+    
+    if(_localStorage.length){
+      _localStorage.forEach((element: ArtistObject | TrackObject | SimplifiedAlbumObject) => {
+        element.favorito = true;
+        
+        if(element.type == 'artist') this.artistItems.push(element);
+        if(element.type == 'track') this.tracksItems.push(element);
+        if(element.type == 'album') this.albumsItems.push(element);
+      });
+    }
+    
+  }
+
 
 }
