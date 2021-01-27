@@ -1,48 +1,24 @@
 
-<div class="container">
-    <h3>Insside Music</h3>
+<div class="login-container">
+    <div class="header">
+        <img src="../../../../assets/img/logo.png" alt="">
+    	<div>INSSIDE<span>Music</span></div>
+    </div>
+    <br>
+    <div class="login">
+        <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault()">
+    		<input type="text" placeholder="username" name="user" formControlName="userName"><br>
+    		<input type="password" placeholder="password" name="password" formControlName="password" ><br>
+        </form>
 
-    <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault()">
-
-        <div class="mb-3 row">
-            <label for="inputUserName" class="col-sm-2 col-form-label">User Name</label>
-
-            <div class="col-sm-10">
-                <input type="text" 
-                       class="form-control" 
-                       id="inputUserName" 
-                       placeholder="User Name" 
-                       formControlName="userName" 
-                       required
-                       autocomplete="off">
-            </div>
-        </div>
-    
-        <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-
-            <div class="col-sm-10">
-                <input type="password" 
-                       class="form-control" 
-                       id="inputPassword" 
-                       placeholder="*******" 
-                       formControlName="password" 
-                       required
-                       autocomplete="off">
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <button type="submit" 
-                    class="btn btn-primary btn-lg btn-block"
-                    [disabled]="loginForm.invalid"
-                    [ngClass]="{'disabledButton':loginForm.invalid}"
-                    (click)="login()">
+        <button type="submit" 
+                class="btn btn-primary" 
+                [ngClass]="{'disabledButton':loginForm.invalid}"
+                [disabled]="loginForm.invalid"
+                (click)="login()">
                 
-                Log In
-            </button>
-        </div>
-    </form>
+            LOGIN
+        </button>
+    </div>
 </div>
-
 <app-loading *ngIf="loading"></app-loading>
