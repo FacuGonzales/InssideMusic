@@ -67,4 +67,53 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     )
   }
 
+  getFavorites(){
+    let _localStorage = JSON.parse(localStorage.getItem('Favoritos') || '[]');
+    if(_localStorage == null) _localStorage = [];
+    
+    this.favorites = _localStorage;
+
+    if(this.informationArtists) this.informationArtists.favorito = false;
+    if(this.informationTracks) this.informationTracks.favorito = false;
+    if(this.informationAlbum){
+      this.informationAlbum.favorito = false;
+      this.informationAlbum.tracks?.items?.forEach( (t: SimplifiedAlbumObject) => t.favorito = false)
+    }
+
+    if(this.favorites.length){
+      this.favorites.forEach( fav => {
+        
+        if(this.informationArtists){
+          if(fav.id == this.informationArtists.id){
+            this.informationArtists.favorito = true;
+            return
+          }
+        }
+        
+        if(this.informationAlbum){
+          if(fav.id == this.informationAlbum.id){
+            this.informationAlbum.favorito = true;
+            return
+          }
+
+          this.informationAlbum.tracks?.items?.forEach( (t: SimplifiedAlbumObject) => {
+            if(fav.id == t.id){
+              t.favorito = true;
+              return
+            }
+  
+          })
+        } 
+
+        if(this.informationTracks){
+          if(fav.id == this.informationTracks.id){
+            this.informationTracks.favorito = true;
+            return
+          }
+        } 
+      })
+    }
+  }
+
+
 }
