@@ -41,4 +41,14 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     this.subscribes.forEach(s => s.unsubscribe());
   }
 
+  initParams(){
+    this.subscribes[0] = this.route.params.subscribe(
+      params => {
+        this.id = params['id'],
+        this.type = params['type']
+      }
+    )
+  }
+
+
 }
