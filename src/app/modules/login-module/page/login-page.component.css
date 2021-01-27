@@ -1,3 +1,105 @@
+@import "../../../../assets/Fonts/fonts.css";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+.login-container {
+  background-image: url(../../../../assets/img/fondoLogin.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.header {
+  width: 20%;
+}
+
+.header img {
+  width: 100%;
+}
+
+.header div {
+  font-family: BebasNeueRegular;
+  font-size: 2.5rem;
+  color: #fff;
+  letter-spacing: 0.2rem;
+  color: #648dff;
+  margin: 0px 10px;
+}
+
+.header div span {
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .header img {
+    width: 50%;
+  }
+}
+
+.login {
+  width: 20%;
+  border: 1px solid #fff;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.login form {
+  font-family: BebasNeueRegular;
+  width: 100%;
+}
+
+.login form input {
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  transition: all 0.3s;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.login form input:focus {
+  border-bottom: 2px solid #2aa7df;
+  background-color: #2aa6df42;
+}
+
+@media only screen and (max-width: 768px) {
+  .login {
+    width: 75%;
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login form input {
+    font-size: 14px;
+  }
+}
+
+button {
+  width: 100%;
+}
 .disabledButton {
   cursor: not-allowed;
 }
