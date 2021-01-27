@@ -10,9 +10,12 @@ export class InformationDataService {
 
   constructor(public http: HttpClient) { }
 
-  getAnArtist(id:string): Observable<any>{
+  getInformation(id:string, type:string): Observable<any>{
+    let typeSearch = (type && type == 'artist') ? 'artists' : 
+                     (type && type == 'album') ? 'albums' : 
+                     (type && type == 'track') ? 'tracks' : '';
 
-    let url = `https://api.spotify.com/v1/artists/${id}`
+    let url = `https://api.spotify.com/v1/${typeSearch}/${id}`
 
     let token = localStorage.getItem('token') ? localStorage.getItem('token') : ''; 
 
@@ -20,4 +23,5 @@ export class InformationDataService {
 
     return this.http.get(url, {headers: headers});
   }
+
 }
