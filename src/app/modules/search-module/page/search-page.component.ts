@@ -58,8 +58,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.subscribes.forEach(s => s.unsubscribe());
   }
 
+  // agregar subscribe destroy
   formSubscribe(){
-    this.searchForm.valueChanges.subscribe( value => {
+    this.subscribes[0] = this.searchForm.valueChanges.subscribe( value => {
       this.itemSelected = value 
 
       if(this.itemSelected.length > 3){
@@ -67,7 +68,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.typeForm.valueChanges.subscribe(_type => {
+    this.subscribes[1] = this.typeForm.valueChanges.subscribe(_type => {
       this.typeSelected = _type;
 
       if(this.itemSelected.length > 3){
@@ -81,28 +82,26 @@ export class SearchPageComponent implements OnInit, OnDestroy {
                (this.typeSelected && this.typeSelected == 'album') ? 'albums' :
                (this.typeSelected && this.typeSelected == 'track') ? 'tracks' : '';
                
-    this.subscribes.push(this.searchData.searchAnItem(item, types).subscribe(
+    this.subscribes[2] = this.searchData.searchAnItem(item, types).subscribe(
       resp => {
         if(resp){
           this.searchResult = resp;
 
+          this.itemsArtists = [];
+          this.itemsAlbum = [];
+          this.itemsTracks = [];
+
           switch(type){
             case 'artists':
               this.itemsArtists = resp[type].items;
-              this.itemsAlbum = [];
-              this.itemsTracks = [];
               break;
 
             case 'albums':
               this.itemsAlbum = resp[type].items;
-              this.itemsArtists = [];
-              this.itemsTracks = [];
               break;
 
             case 'tracks':
               this.itemsTracks = resp[type].items;
-              this.itemsArtists = [];
-              this.itemsAlbum = [];
               break;
 
             break;
@@ -116,7 +115,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
         this.navComponent.logOut();
       }
-    ))
+    )
   }
 
   getFavorites(){
@@ -196,7 +195,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
-    this.router.navigate(['/info/', value.id, value.type]);
+    this.router.navigate(['/information/', value.id, value.type]);
   }
 
 }

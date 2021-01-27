@@ -60,19 +60,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   formSubscribe(){
     this.limiteTop.setValue(50);
-    this.subscribes.push(this.limiteTop.valueChanges.subscribe(
+    this.subscribes[0] = this.limiteTop.valueChanges.subscribe(
       value => {
         this.limitSelected = value ? parseInt(value) : 10;
         this.setFilters(this.limitSelected, this.countrySelected);
       }
-    ));
+    )
 
-    this.subscribes.push(this.countryTop.valueChanges.subscribe(
+    this.subscribes[1] = this.countryTop.valueChanges.subscribe(
       value => {
         this.countrySelected = value
         this.setFilters(this.limitSelected, this.countrySelected);
       }
-    ));
+    );
 
    
   }
@@ -91,8 +91,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   getTopPlayList(limite: number, country: string,){
-
-    this.homeData.getPlayList(limite, country).subscribe(
+    this.subscribes[2] = this.homeData.getPlayList(limite, country).subscribe(
       resp => {
         if(resp) {
           this.topPlayList = resp;

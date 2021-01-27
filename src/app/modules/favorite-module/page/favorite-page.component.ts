@@ -65,6 +65,6 @@ export class FavoritePageComponent implements OnInit {
   }
 
   viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
-    this.router.navigate(['/info/', value.id, value.type]);
+    this.router.navigate(['/information/', value.id, value.type]);
   }
 }
