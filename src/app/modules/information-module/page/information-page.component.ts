@@ -37,5 +37,8 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     this.getInformation();
   }
 
+  ngOnDestroy(){
+    this.subscribes.forEach(s => s.unsubscribe());
+  }
 
 }
