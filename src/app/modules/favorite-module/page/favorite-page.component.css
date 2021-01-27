@@ -1,0 +1,167 @@
+.fav .fav-item {
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.fav #fav-flters {
+  padding: 0;
+  margin: 0 auto 15px auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.fav #fav-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 3px 10px 3px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+}
+
+.fav #fav-flters li:hover,
+.fav #fav-flters li.filter-active {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 200, 212, 1) 10%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(245, 0, 165, 1) 90%
+  );
+  /* background: rgb(122, 13, 13); */
+}
+
+.fav #fav-flters li:last-child {
+  margin-right: 0;
+}
+
+.fav .fav-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.fav .fav-wrap::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 30px;
+  bottom: 30px;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
+}
+
+.fav .fav-wrap .fav-info {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav .fav-wrap .fav-info::before {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  transition: all 0.5s ease 0s;
+  z-index: 9994;
+}
+
+.fav .fav-wrap .fav-info::after {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transition: all 0.5s ease 0s;
+  z-index: 9994;
+}
+
+.fav .fav-wrap .fav-info h4 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.fav .fav-wrap .fav-info p {
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+
+p.description {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+  font-size: 10px !important;
+}
+
+.fav .fav-wrap .fav-links {
+  text-align: center;
+  z-index: 4;
+}
+
+.fav .fav-wrap .fav-links a {
+  color: #fff;
+  margin: 0 2px;
+  font-size: 28px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.fav .fav-wrap .fav-links a:hover {
+  color: rgba(0, 200, 212, 1);
+}
+
+.fav .fav-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.fav .fav-wrap:hover .fav-info {
+  opacity: 1;
+}
+
+.fav .fav-wrap:hover .fav-info::before {
+  top: 15px;
+  left: 15px;
+}
+
+.fav .fav-wrap:hover .fav-info::after {
+  bottom: 15px;
+  right: 15px;
+}
