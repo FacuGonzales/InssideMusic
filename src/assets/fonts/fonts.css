@@ -1,0 +1,11 @@
+/* *****************  Importacion de fuentes ***************** */
+
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("./BebasNeue-Regular.ttf");
+}
+
+@font-face {
+  font-family: "QuestrialRegular";
+  src: url("./Questrial-Regular.ttf");
+}
