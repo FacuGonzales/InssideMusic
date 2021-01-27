@@ -38,5 +38,31 @@ export class FavoritePageComponent implements OnInit {
     
   }
 
+  favorito(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
+    this.favorites = [];
+
+    let index = this.artistItems.findIndex(a => a.id == value.id);
+    if(index >= 0) {
+      this.artistItems.splice(index, 1);
+    }
+    index = this.albumsItems.findIndex(a => a.id == value.id);
+    if(index >= 0){
+      this.albumsItems.splice(index, 1);
+    }
+    index = this.tracksItems.findIndex(a => a.id == value.id);
+    if(index >= 0){
+      this.tracksItems.splice(index, 1);
+    }
+
+    localStorage.removeItem('Favoritos');
+
+    this.artistItems.forEach( a => this.favorites.push(a))
+    this.albumsItems.forEach( a => this.favorites.push(a))
+    this.tracksItems.forEach( a => this.favorites.push(a))
+
+    
+    localStorage.setItem('Favoritos', JSON.stringify(this.favorites));
+  }
+
 
 }
