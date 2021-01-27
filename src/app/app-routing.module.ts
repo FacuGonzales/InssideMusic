@@ -26,6 +26,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/favorite-module/favorite.module').then(m => m.FavoriteModule), 
     canActivate: [UserGuardService]
   },
+  { 
+    path: 'information/:id/:type', 
+    loadChildren: () => import('./modules/information-module/information.module').then(m => m.InformationModule), 
+    canActivate: [UserGuardService]
+  },
   {
     path: '**', redirectTo: defaultPathApp
   }
