@@ -115,5 +115,16 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  favorito(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
+    let index = this.favorites.findIndex(e => e.id == value.id);
 
+    if(index >= 0){ 
+      this.favorites.splice(index, 1);
+    }else{
+      this.favorites.push(value);
+    }
+
+    localStorage.setItem('Favoritos', JSON.stringify(this.favorites));
+    this.getFavorites();
+  }
 }
