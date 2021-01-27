@@ -50,5 +50,21 @@ export class InformationPageComponent implements OnInit, OnDestroy {
     )
   }
 
+  getInformation(){
+    this.subscribes[1] = this.infoData.getInformation(this.id, this.type).subscribe(
+      resp => {
+        if(resp){
+          this.informationArtists = this.type == 'artist' ? resp : {};
+          this.informationAlbum = this.type == 'album' ? resp : {};
+          this.informationTracks = this.type == 'track' ? resp : {};
+
+          this.getFavorites();
+        }
+      },errr => {
+        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
+        this.navComponent.logOut()
+      }
+    )
+  }
 
 }
