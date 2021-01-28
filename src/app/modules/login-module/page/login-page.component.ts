@@ -67,7 +67,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
       },error => {
         this.loading = false;
-        this.alert.error(error.error.error_description);
+        this.alert.error(error.error.error);
       }
     ))
 
