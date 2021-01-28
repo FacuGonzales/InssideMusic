@@ -1,0 +1,122 @@
+.container h3 {
+  font-size: 2rem;
+  margin: 15px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container h3 {
+    font-size: 1.3rem;
+  }
+}
+
+.resultado-info-principal {
+  margin: 20px;
+}
+
+.item-principal {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #0d006321; */
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal {
+    display: block;
+  }
+}
+
+.item-principal .img-principal {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .img-principal {
+    width: 100%;
+  }
+}
+
+.item-principal .img-principal .img-container {
+  align-self: center;
+  width: 95%;
+  height: fit-content;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .img-principal .img-container {
+    height: fit-content;
+  }
+}
+
+.item-principal .img-principal .img-container img {
+  width: 100%;
+  transform: rotateY(180deg);
+  margin: 0px auto;
+  border: 2px solid #34323f;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .img-principal .img-container img {
+    width: 100%;
+    transform: rotateY(180deg);
+  }
+}
+
+.item-principal .header-principal {
+  font-family: BebasNeueRegular;
+  width: 60%;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .header-principal {
+    width: 100%;
+  }
+}
+
+.item-principal .header-principal .info-principal {
+  flex-direction: column;
+  grid-column: 2/-1;
+  grid-row: 8/-1;
+  line-height: 1.2;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .header-principal .info-principal {
+    padding: 10px 20px;
+    grid-column: 1/-1;
+  }
+}
+
+.item-principal .header-principal .info-principal h5 {
+  font-size: 3rem;
+  border-bottom: 1px solid #fff;
+}
+
+.item-principal .header-principal .info-principal p {
+  font-size: 1.3rem;
+}
+
+.item-principal .header-principal .info-principal i {
+  font-size: 2rem;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-principal .header-principal .info-principal i {
+    font-size: 1.3rem;
+  }
+}
+
+p.isFav {
+  margin: 25px 0px;
+  font-style: italic;
+  color: #5a76c3;
+}
