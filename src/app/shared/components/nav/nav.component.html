@@ -11,28 +11,20 @@
 
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">
-                        <i class="bi bi-house-door-fill"></i>
-                        <span>Home</span> 
-                    </a>
+                    <i class="bi bi-house-door-fill"></i>
+                    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/search']" routerLinkActive="router-link-active">
-                        <i class="bi bi-search"></i>
-                        <span>Buscar</span>
-                    </a>
+                    <i class="bi bi-search"></i>
+                    <a class="nav-link" [routerLink]="['/search']" routerLinkActive="router-link-active">Buscar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/favorites']" routerLinkActive="router-link-active">
-                        <i class="bi bi-star-fill"></i>
-                        <span>Favoritos</span>
-                    </a>
+                    <i class="bi bi-star-fill"></i>
+                    <a class="nav-link" [routerLink]="['/favorites']" routerLinkActive="router-link-active">Favoritos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="logOut()">
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Cerrar Sesion</span>
-                    </a>
+                    <i class="bi bi-box-arrow-right"></i>
+                    <a class="nav-link" (click)="logOut()">Cerrar Sesion</a>
                 </li>
             </ul>
         </div>
