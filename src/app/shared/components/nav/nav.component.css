@@ -1,0 +1,64 @@
+@import "../../../../assets/Fonts/fonts.css";
+
+nav.navbar-dark {
+  background-color: #181818 !important;
+}
+
+hr {
+  border-top: 1px solid rgb(249 249 249 / 32%) !important;
+}
+
+h4,
+li {
+  font-family: BebasNeueRegular;
+  font-size: 1.4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.header img {
+  width: 8%;
+}
+
+.header h4 {
+  color: #648dff;
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .header img {
+    width: 30%;
+  }
+  .header h4 {
+    color: #648dff;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+  }
+}
+
+.header h4 span {
+  color: #fff;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
+}
+
+li a:hover {
+  color: #648dff;
+  transition: all 0.3s;
+}
+
+a {
+  color: #fff;
+}
+
+a span {
+  margin-left: 11px;
+}
