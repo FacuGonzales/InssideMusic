@@ -100,6 +100,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
         }
       },err => {
         this.items = [];
+        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
+        this.navComponent.logOut();
       }
     )
   }
