@@ -48,8 +48,12 @@ li {
 li {
   list-style: none;
   cursor: pointer;
+  display: flex;
+  justify-content: end;
+  color: #fff;
 }
 
+li:hover,
 li a:hover {
   color: #648dff;
   transition: all 0.3s;
@@ -57,6 +61,9 @@ li a:hover {
 
 a {
   color: #fff;
+}
+a.nav-link {
+  padding: 0.45rem 1rem !important;
 }
 
 a span {
