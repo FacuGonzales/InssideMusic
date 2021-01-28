@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { NavComponent } from 'src/app/shared/components';
+import { ArtistObject } from '../models/artist-object';
 import { PlaylistObject } from '../models/playlist-object';
 import { PlaylistTrackObject } from '../models/playlist-track-object';
 import { SimplifiedAlbumObject } from '../models/simplified-album-object';
@@ -103,6 +104,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     )
   }
 
+  viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
+    this.router.navigate(['/information/', value.id, value.type]);
+  }
+  
   setFilters(limite:number, country:string){
     let limit = limite ? limite : 50;
 
