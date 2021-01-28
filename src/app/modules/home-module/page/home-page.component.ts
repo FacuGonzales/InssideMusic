@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { NavComponent } from 'src/app/shared/components';
 import { ArtistObject } from '../models/artist-object';
+import { PagingObject } from '../models/paging-object';
 import { PlaylistObject } from '../models/playlist-object';
 import { PlaylistTrackObject } from '../models/playlist-track-object';
 import { SimplifiedAlbumObject } from '../models/simplified-album-object';
@@ -23,7 +24,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   newReleaseList: SimplifiedAlbumObject[] = [];
 
-  topPlayList: any;
+  topPlayList: PagingObject = {};
   items: any[] = [];
 
   limit: number[] = [5, 10, 20, 50];
@@ -96,7 +97,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       resp => {
         if(resp) {
           this.topPlayList = resp;
-          this.items = this.topPlayList.items;
+          this.items = this.topPlayList.items ? this.topPlayList.items : [];
         }
       },err => {
         this.items = [];
