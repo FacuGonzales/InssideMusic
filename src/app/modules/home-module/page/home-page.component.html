@@ -76,46 +76,44 @@
             </div>
 
             <div class="table-responsive-sm">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <table class="table table-dark" *ngIf="items.length != 0">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Portada </th>
-                                <th scope="col">Track</th>
-                                <th scope="col">Artista</th>
-                                <th scope="col">Album</th>
-                                <th scope="col">Play</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let e of items; let i = index;">
-                                <th scope="row">{{i + 1}}</th>
-                                <td>
-                                    <span *ngFor="let im of e.track.album.images">
-                                        <img class="card-img-top"  
-                                             alt="Card image cap"
-                                             *ngIf="im.height == 64"
-                                             src="{{im.url}}">
-                                    </span>
-                                </td>
-                                <td>{{e.track.name}}</td>
-                                <td>
-                                    <span *ngFor="let a of e.track.artists;">
-                                        {{a.name}}
-                                    </span>
-                                </td>
-                                <td>{{e.track.album.name}}</td>
-                                <td>
-                                    <i class="bi bi-x-circle-fill text-danger" *ngIf="!e.track.preview_url"></i>
-                                    <a href="{{e.track.preview_url}}" target="_blank" *ngIf="e.track.preview_url">
-                                        <i class="bi bi-play-circle-fill" [ngClass]="{'text-success':e.track.preview_url, 'text-secondary': !e.track.preview_url}"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table table-dark" *ngIf="items.length != 0">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Portada </th>
+                            <th scope="col">Track</th>
+                            <th scope="col">Artista</th>
+                            <th scope="col">Album</th>
+                            <th scope="col">Play</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of items; let i = index;">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>
+                                <span *ngFor="let im of e.track.album.images">
+                                    <img class="card-img-top"  
+                                         alt="Card image cap"
+                                         *ngIf="im.height == 64"
+                                         src="{{im.url}}">
+                                </span>
+                            </td>
+                            <td>{{e.track.name}}</td>
+                            <td>
+                                <span *ngFor="let a of e.track.artists;">
+                                    {{a.name}}
+                                </span>
+                            </td>
+                            <td>{{e.track.album.name}}</td>
+                            <td>
+                                <i class="bi bi-x-circle-fill text-danger" *ngIf="!e.track.preview_url"></i>
+                                <a href="{{e.track.preview_url}}" target="_blank" *ngIf="e.track.preview_url">
+                                    <i class="bi bi-play-circle-fill" [ngClass]="{'text-success':e.track.preview_url, 'text-secondary': !e.track.preview_url}"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
