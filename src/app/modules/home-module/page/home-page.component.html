@@ -85,6 +85,7 @@
                                 <th scope="col">Track</th>
                                 <th scope="col">Artista</th>
                                 <th scope="col">Album</th>
+                                <th scope="col">Play</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -105,6 +106,12 @@
                                     </span>
                                 </td>
                                 <td>{{e.track.album.name}}</td>
+                                <td>
+                                    <i class="bi bi-x-circle-fill text-danger" *ngIf="!e.track.preview_url"></i>
+                                    <a href="{{e.track.preview_url}}" target="_blank" *ngIf="e.track.preview_url">
+                                        <i class="bi bi-play-circle-fill" [ngClass]="{'text-success':e.track.preview_url, 'text-secondary': !e.track.preview_url}"></i>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
