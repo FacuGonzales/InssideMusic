@@ -7,11 +7,12 @@
     <br>
     <div class="login">
         <form [formGroup]="loginForm" (keydown.enter)="$event.preventDefault()">
-    		<input type="text" placeholder="username" name="user" formControlName="userName">
-    		<input type="password" placeholder="password" name="password" formControlName="password" >
+    		<input type="text" id="inputUser" placeholder="username" name="user" formControlName="userName">
+    		<input type="password" id="inputPassword" placeholder="password" name="password" formControlName="password" >
         </form>
 
         <button type="submit" 
+                id="buttonLogin"
                 class="btn btn-primary" 
                 [ngClass]="{'disabledButton':loginForm.invalid}"
                 [disabled]="loginForm.invalid"
