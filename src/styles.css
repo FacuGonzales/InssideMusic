@@ -34,6 +34,15 @@ hr {
   background-color: #fff;
 }
 
+label {
+  color: #fff;
+}
+
+table.table-dark {
+  background-color: #181818;
+  width: 100% !important;
+}
+
 i.bi-star {
   color: #ffc107 !important;
 }
