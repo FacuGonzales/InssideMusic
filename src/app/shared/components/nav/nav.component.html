@@ -1,27 +1,37 @@
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-            <h4 class="text-white">InssideMusic</h4>
+
+            <div class="header">
+                <img src="../../../../assets/img/logo.png" alt="">
+                <h4>INSSIDE<span>Music</span></h4>
+            </div>
+
+            <hr>
 
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">
-                        <i class="bi bi-house-door-fill"></i>Home 
+                        <i class="bi bi-house-door-fill"></i>
+                        <span>Home</span> 
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/search']" routerLinkActive="router-link-active">
-                        <i class="bi bi-search"></i>Buscar
+                        <i class="bi bi-search"></i>
+                        <span>Buscar</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/favorites']" routerLinkActive="router-link-active">
-                        <i class="bi bi-star-fill"></i>Favoritos
+                        <i class="bi bi-star-fill"></i>
+                        <span>Favoritos</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" (click)="logOut()">
-                        <i class="bi bi-box-arrow-right"></i>Cerrar Sesion
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Cerrar Sesion</span>
                     </a>
                 </li>
             </ul>
