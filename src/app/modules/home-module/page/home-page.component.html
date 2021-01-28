@@ -1,86 +1,116 @@
 
-<nav-component></nav-component>
 
-<div class="container">
-    <div>
-        <h3>Últimos Lanzamientos</h3>
+<div class="home-container">
+    <nav-component></nav-component>
+    <div class="container">
 
-        <div class="card" style="width: 18rem;" *ngFor="let e of newReleaseList">
+        <h3>Ultimos Lanzamientos</h3>
 
-            <div *ngFor="let i of e.images">
-                <img class="card-img-top"  
-                     alt="Card image cap"
-                     *ngIf="i.height == 300"
-                     src="{{i.url}}">
-            </div>
-            
+        <div class="container-slider">
+            <div class="container-slider-ul">
+                <div class="container-slider-li">
 
-            <div class="card-body">
-                <h2>{{e.name}}</h2>
-                <h5 *ngFor="let a of e.artists">{{a.name}}</h5>
-                <p class="card-text">{{e.type}}</p>
+                    <div class="list-container">
+                        <div class="item-container" *ngFor="let newRelease of newReleaseList">
+                            <div class="img-container">
+                                <span *ngIf="!newRelease.images">
+                                    <img class="item-logo" src="../../../../assets/img/sinPortada320.png">
+                                </span>
+                            
+                                <span *ngIf="newRelease.images">
+                                    <span *ngFor="let img of newRelease.images">
+                                        <img class="item-logo" *ngIf="img.height == 300" src="{{img.url}}">
+                                    </span>
+                                </span>
+                            </div>
+                        
+                            <div class="info-container">
+                                <div class="title-container">
+                                    <h4>{{ newRelease.name }}</h4>
+                                </div>
+                            
+                                <div class="more-info-container">
+                                    <p *ngFor="let artist of newRelease.artists"> {{artist.name}} </p>
+                                    <p>Lanzamiento {{newRelease.release_date}}</p>
+                                    <p>{{newRelease.type}}</p>
+                                </div>
+                            
+                            
+                                <div class="view-info-icon">
+                                    <i class="bi bi-info-circle text-info" (click)="viewInfo(newRelease)"></i>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+        
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
-        <h3>TOP 50</h3>
-        <p>Tu actualización diaria de las pistas más reproducidas en este momento.</p>
+        <div>
+            <h3>TOP 50</h3>
+            <p class="p-top">Tu actualización diaria de las pistas más reproducidas en este momento.</p>
 
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputState">Límite</label>
-                <select id="inputState" class="form-control"  [formControl]="limiteTop">
-                    <option selected>SELECCIONAR</option>
-                    <option>5</option>
-                    <option>10</option>
-                    <option>50</option>
-                </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Límite</label>
+                    <select id="inputState" class="form-control"  [formControl]="limiteTop">
+                        <option selected>SELECCIONAR</option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control"  [formControl]="countryTop">
+                        <option selected>GLOBAL</option>
+                        <option *ngFor="let e of country;">{{e}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control"  [formControl]="countryTop">
-                    <option selected>GLOBAL</option>
-                    <option *ngFor="let e of country;">{{e}}</option>
-                </select>
+
+            <div *ngIf="items.length == 0">
+                <p>No se econtraron resultados para los filtros aplicados..</p>
+            </div>
+
+            <div class="table-responsive-sm">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table class="table table-dark" *ngIf="items.length != 0">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Portada </th>
+                                <th scope="col">Track</th>
+                                <th scope="col">Artista</th>
+                                <th scope="col">Album</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let e of items; let i = index;">
+                                <th scope="row">{{i + 1}}</th>
+                                <td>
+                                    <span *ngFor="let im of e.track.album.images">
+                                        <img class="card-img-top"  
+                                             alt="Card image cap"
+                                             *ngIf="im.height == 64"
+                                             src="{{im.url}}">
+                                    </span>
+                                </td>
+                                <td>{{e.track.name}}</td>
+                                <td>
+                                    <span *ngFor="let a of e.track.artists;">
+                                        {{a.name}}
+                                    </span>
+                                </td>
+                                <td>{{e.track.album.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
-        <div *ngIf="items.length == 0">
-            <p>No se econtraron resultados para los filtros aplicados..</p>
-        </div>
-
-        <table class="table table-dark" *ngIf="items.length != 0">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Portada </th>
-                    <th scope="col">Track</th>
-                    <th scope="col">Artista</th>
-                    <th scope="col">Album</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let e of items; let i = index;">
-                    <th scope="row">{{i + 1}}</th>
-                    <td>
-                        <span *ngFor="let im of e.track.album.images">
-                            <img class="card-img-top"  
-                                 alt="Card image cap"
-                                 *ngIf="im.height == 64"
-                                 src="{{im.url}}">
-                        </span>
-                    </td>
-                    <td>{{e.track.name}}</td>
-                    <td>
-                        <span *ngFor="let a of e.track.artists;">
-                            {{a.name}}
-                        </span>
-                    </td>
-                    <td>{{e.track.album.name}}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>
 
