@@ -1,5 +1,4 @@
 @import "../../../../assets/Fonts/fonts.css";
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 .login-container {
   background-image: url(../../../../assets/img/fondoLogin.png);
@@ -65,7 +64,7 @@
 }
 
 .login form {
-  font-family: BebasNeueRegular;
+  font-family: QuestrialRegular;
   width: 100%;
 }
 
