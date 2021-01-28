@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingComponent,
          NavComponent } from './components';
 import { SharedRoutingModule } from './shared-routing.module';
+import { FooterComponent } from './components/footer/footer.component';
          
 
 @NgModule({
@@ -13,12 +14,14 @@ import { SharedRoutingModule } from './shared-routing.module';
   ],
   declarations: [
     LoadingComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ],
   providers: [],
   exports: [
     LoadingComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent
   ]
 })
 
