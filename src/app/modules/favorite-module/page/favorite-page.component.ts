@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ArtistObject } from '../../home-module/models/artist-object';
-import { SimplifiedAlbumObject } from '../../home-module/models/simplified-album-object';
-import { TrackObject } from '../../home-module/models/track-object';
+import { ArtistObject } from '../../../models/artist-object';
+import { SimplifiedAlbumObject } from '../../../models/simplified-album-object';
+import { TrackObject } from '../../../models/track-object';
+
 
 @Component({
   selector: 'app-favorite-page',

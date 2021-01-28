@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { NavComponent } from 'src/app/shared/components';
-import { ArtistObject } from '../models/artist-object';
-import { PagingObject } from '../models/paging-object';
-import { PlaylistObject } from '../models/playlist-object';
-import { PlaylistTrackObject } from '../models/playlist-track-object';
-import { SimplifiedAlbumObject } from '../models/simplified-album-object';
-import { TrackObject } from '../models/track-object';
+import { ArtistObject } from '../../../models/artist-object';
+import { PagingObject } from '../../../models/paging-object';
+import { PlaylistObject } from '../../../models/playlist-object';
+import { PlaylistTrackObject } from '../../../models/playlist-track-object';
+import { SimplifiedAlbumObject } from '../../../models/simplified-album-object';
+import { TrackObject } from '../../../models/track-object';
 import { HomeDataService } from '../services/home-data.service';
 
 @Component({

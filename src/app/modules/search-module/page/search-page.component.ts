@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { NavComponent } from 'src/app/shared/components';
-import { ArtistObject } from '../../home-module/models/artist-object';
-import { PagingObject } from '../../home-module/models/paging-object';
-import { SimplifiedAlbumObject } from '../../home-module/models/simplified-album-object';
-import { TrackObject } from '../../home-module/models/track-object';
+import { ArtistObject } from '../../../models/artist-object';
+import { PagingObject } from '../../../models/paging-object';
+import { SimplifiedAlbumObject } from '../../../models/simplified-album-object';
+import { TrackObject } from '../../../models/track-object';
 import { LoginPageComponent } from '../../login-module/page';
 import { SearchDataService } from '../services/search-data.service';
 
