@@ -43,6 +43,32 @@
   color: #fff;
 }
 
+@media only screen and (max-width: 1700px) and (min-width: 1100px) {
+  .header {
+    width: 20%;
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .header img {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 769px) {
+  .header {
+    width: 30%;
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .header img {
+    width: 50%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .header {
     width: 100%;
