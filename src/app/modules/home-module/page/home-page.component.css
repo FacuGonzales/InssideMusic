@@ -28,3 +28,9 @@ h3 {
   color: #fff;
   font-size: 1.2rem;
 }
+
+.paginator-controlers {
+  color: #fff;
+  text-align: center;
+  margin: 20px 0px;
+}
