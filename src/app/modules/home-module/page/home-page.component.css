@@ -34,3 +34,16 @@ h3 {
   text-align: center !important;
   margin: 20px 0px !important;
 }
+
+.paginator-controlers /deep/ .ngx-pagination a {
+  color: #fff !important;
+}
+
+.paginator-controlers /deep/ .ngx-pagination a:hover {
+  background-color: #27a343 !important;
+}
+
+.paginator-controlers /deep/ .ngx-pagination .disabled {
+  color: #7b7a7a !important;
+  cursor: not-allowed !important;
+}
