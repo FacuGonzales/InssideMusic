@@ -109,7 +109,7 @@
 
 .login form input:focus {
   border-bottom: 2px solid #2aa7df;
-  background-color: #2aa6df42;
+  /* background-color: #2aa6df42; */
 }
 
 @media only screen and (max-width: 768px) {

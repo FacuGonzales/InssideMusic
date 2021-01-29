@@ -55,7 +55,7 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputState">Límite</label>
+                    <label for="inputState">Límite de resultados</label>
                     <select id="inputState" class="form-control"  [formControl]="limiteTop">
                         <option selected>SELECCIONAR</option>
                         <option>5</option>
@@ -63,17 +63,6 @@
                         <option>50</option>
                     </select>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control"  [formControl]="countryTop">
-                        <option selected>GLOBAL</option>
-                        <option *ngFor="let e of country;">{{e}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div *ngIf="items.length == 0">
-                <p>No se econtraron resultados para los filtros aplicados..</p>
             </div>
 
             <div class="table-responsive-sm">
