@@ -19,6 +19,8 @@ import { HomeDataService } from '../services/home-data.service';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 
+  loading:boolean = false;
+
   limiteTop = new FormControl();
   countryTop = new FormControl();
 
@@ -75,19 +77,18 @@ export class HomePageComponent implements OnInit, OnDestroy {
         this.setFilters(this.limitSelected, this.countrySelected);
       }
     );
-
-   
   }
 
   getNewRelease(){
+    this.loading = true;
     this.homeData.getNewRelease().subscribe(
       resp => {
         if(resp){
+          this.loading = false;
           this.newReleaseList = resp.albums.items;
         }
       },err => {
-        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
-        this.navComponent.logOut();
+        this.errorApi();
       }
     )
   }
@@ -100,11 +101,16 @@ export class HomePageComponent implements OnInit, OnDestroy {
           this.items = this.topPlayList.items ? this.topPlayList.items : [];
         }
       },err => {
-        this.items = [];
-        this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
-        this.navComponent.logOut();
+        this.errorApi();
       }
     )
+  }
+
+  errorApi(){
+    this.loading = false;
+    this.items = [];
+    this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
+    this.navComponent.logOut();
   }
 
   viewInfo(value: ArtistObject | TrackObject | SimplifiedAlbumObject){
