@@ -15,6 +15,8 @@ import { InformationDataService } from '../services/information-data.service';
 })
 export class InformationPageComponent implements OnInit, OnDestroy {
 
+  loading: boolean = false;
+
   id: string = '';
   type: string = '';
 
@@ -51,9 +53,12 @@ export class InformationPageComponent implements OnInit, OnDestroy {
   }
 
   getInformation(){
+    this.loading = true;
+
     this.subscribes[1] = this.infoData.getInformation(this.id, this.type).subscribe(
       resp => {
         if(resp){
+          this.loading = false;
           this.informationArtists = this.type == 'artist' ? resp : {};
           this.informationAlbum = this.type == 'album' ? resp : {};
           this.informationTracks = this.type == 'track' ? resp : {};
@@ -61,6 +66,7 @@ export class InformationPageComponent implements OnInit, OnDestroy {
           this.getFavorites();
         }
       },errr => {
+        this.loading = false;
         this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
         this.navComponent.logOut()
       }

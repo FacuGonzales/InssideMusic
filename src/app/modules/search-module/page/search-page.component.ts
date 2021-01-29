@@ -18,6 +18,8 @@ import { SearchDataService } from '../services/search-data.service';
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
 
+  loading: boolean = false;
+
   searchForm = new FormControl();
   typeForm= new FormControl();
 
@@ -78,6 +80,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   getItem(item: string, types:string){
+    this.loading = true;
+
     let type = (this.typeSelected && this.typeSelected == 'artist') ? 'artists' : 
                (this.typeSelected && this.typeSelected == 'album') ? 'albums' :
                (this.typeSelected && this.typeSelected == 'track') ? 'tracks' : '';
@@ -108,10 +112,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           }
 
           this.getFavorites();
+          this.loading = false;
           
         }
        
       },err => {
+        this.loading = false;
         this.alert.warning('Su sesion finalizo, por favor vuelva a ingresar.');
         this.navComponent.logOut();
       }
