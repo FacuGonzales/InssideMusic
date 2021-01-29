@@ -8,38 +8,42 @@
 
         <hr>
 
-        <div class="list-container">
-            <div class="item-container" *ngFor="let newRelease of newReleaseList">
-                <div class="img-container">
-                    <span *ngIf="!newRelease.images">
-                        <img class="item-logo" src="../../../../assets/img/sinPortada320.png">
-                    </span>
-                
-                    <span *ngIf="newRelease.images">
-                        <span *ngFor="let img of newRelease.images">
-                            <img class="item-logo" *ngIf="img.height == 300" src="{{img.url}}">
+        <div class="paginator-items">
+            <div class="list-container">
+                <div class="item-container" *ngFor="let newRelease of newReleaseList | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <div class="img-container">
+                        <span *ngIf="!newRelease.images">
+                            <img class="item-logo" src="../../../../assets/img/sinPortada320.png">
                         </span>
-                    </span>
+                    
+                        <span *ngIf="newRelease.images">
+                            <span *ngFor="let img of newRelease.images">
+                                <img class="item-logo" *ngIf="img.height == 300" src="{{img.url}}">
+                            </span>
+                        </span>
+                    </div>
+                
+                    <div class="info-container">
+                        <div class="title-container">
+                            <h4>{{ newRelease.name }}</h4>
+                        </div>
+                    
+                        <div class="more-info-container">
+                            <p *ngFor="let artist of newRelease.artists"> {{artist.name}} </p>
+                            <p>Lanzamiento {{newRelease.release_date}}</p>
+                            <p>{{newRelease.type}}</p>
+                        </div>
+                    
+                    
+                        <div class="view-info-icon">
+                            <i class="bi bi-info-circle text-info" (click)="viewInfo(newRelease)"></i>
+                        </div>
+                    </div>
                 </div>
-            
-                <div class="info-container">
-                    <div class="title-container">
-                        <h4>{{ newRelease.name }}</h4>
-                    </div>
-                
-                    <div class="more-info-container">
-                        <p *ngFor="let artist of newRelease.artists"> {{artist.name}} </p>
-                        <p>Lanzamiento {{newRelease.release_date}}</p>
-                        <p>{{newRelease.type}}</p>
-                    </div>
-                
-                
-                    <div class="view-info-icon">
-                        <i class="bi bi-info-circle text-info" (click)="viewInfo(newRelease)"></i>
-                    </div>
-                </div>
-            
+
             </div>
+            <pagination-controls class="paginator-controlers" (pageChange)="p = $event"></pagination-controls>
+
         </div>
         
         <div>

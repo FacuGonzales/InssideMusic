@@ -43,6 +43,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
   limitSelected: number = 50;
   countrySelected: string = '';
 
+  p: number = 1;
+  
+  collection: SimplifiedAlbumObject[] = this.newReleaseList; 
+
   subscribes: Subscription[] = [];
 
   @ViewChild(NavComponent) navComponent!: NavComponent;
