@@ -6,50 +6,47 @@
 
         <h3>Ultimos Lanzamientos</h3>
 
-        <div class="container-slider">
-            <div class="container-slider-ul">
-                <div class="container-slider-li">
+        <hr>
 
-                    <div class="list-container">
-                        <div class="item-container" *ngFor="let newRelease of newReleaseList">
-                            <div class="img-container">
-                                <span *ngIf="!newRelease.images">
-                                    <img class="item-logo" src="../../../../assets/img/sinPortada320.png">
-                                </span>
-                            
-                                <span *ngIf="newRelease.images">
-                                    <span *ngFor="let img of newRelease.images">
-                                        <img class="item-logo" *ngIf="img.height == 300" src="{{img.url}}">
-                                    </span>
-                                </span>
-                            </div>
-                        
-                            <div class="info-container">
-                                <div class="title-container">
-                                    <h4>{{ newRelease.name }}</h4>
-                                </div>
-                            
-                                <div class="more-info-container">
-                                    <p *ngFor="let artist of newRelease.artists"> {{artist.name}} </p>
-                                    <p>Lanzamiento {{newRelease.release_date}}</p>
-                                    <p>{{newRelease.type}}</p>
-                                </div>
-                            
-                            
-                                <div class="view-info-icon">
-                                    <i class="bi bi-info-circle text-info" (click)="viewInfo(newRelease)"></i>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-        
+        <div class="list-container">
+            <div class="item-container" *ngFor="let newRelease of newReleaseList">
+                <div class="img-container">
+                    <span *ngIf="!newRelease.images">
+                        <img class="item-logo" src="../../../../assets/img/sinPortada320.png">
+                    </span>
+                
+                    <span *ngIf="newRelease.images">
+                        <span *ngFor="let img of newRelease.images">
+                            <img class="item-logo" *ngIf="img.height == 300" src="{{img.url}}">
+                        </span>
+                    </span>
                 </div>
+            
+                <div class="info-container">
+                    <div class="title-container">
+                        <h4>{{ newRelease.name }}</h4>
+                    </div>
+                
+                    <div class="more-info-container">
+                        <p *ngFor="let artist of newRelease.artists"> {{artist.name}} </p>
+                        <p>Lanzamiento {{newRelease.release_date}}</p>
+                        <p>{{newRelease.type}}</p>
+                    </div>
+                
+                
+                    <div class="view-info-icon">
+                        <i class="bi bi-info-circle text-info" (click)="viewInfo(newRelease)"></i>
+                    </div>
+                </div>
+            
             </div>
         </div>
-
+        
         <div>
             <h3>TOP 50</h3>
+
+            <hr>
+
             <p class="p-top">Tu actualización diaria de las pistas más reproducidas en este momento.</p>
 
             <div class="form-row">
