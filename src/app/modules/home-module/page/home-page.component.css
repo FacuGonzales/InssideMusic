@@ -24,58 +24,6 @@ h3 {
   }
 }
 
-/* .container-slider {
-  width: 95%;
-  margin: auto;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-}
-
-.container-slider-ul {
-  display: flex;
-  padding: 0;
-  width: 350%;
-  animation: cambio 10s infinite alternate;
-}
-
-.container-slider-li {
-  width: 100%;
-  list-style: none;
-  padding: 0px 25px !important;
-  color: #fff;
-  font-family: QuestrialRegular;
-}
-
-@keyframes cambio {
-  0% {
-    margin-left: -0;
-  }
-
-  20% {
-    margin-left: -50;
-  }
-  25% {
-    margin-left: -100%;
-  }
-  45% {
-    margin-left: -100%;
-  }
-  50% {
-    margin-left: -150%;
-  }
-  70% {
-    margin-left: -150%;
-  }
-  75% {
-    margin-left: -200%;
-  }
-  100% {
-    margin-left: -200%;
-  }
-} */
-
 .p-top {
   color: #fff;
   font-size: 1.2rem;
