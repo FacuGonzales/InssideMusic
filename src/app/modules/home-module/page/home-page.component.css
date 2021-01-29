@@ -30,7 +30,7 @@ h3 {
 }
 
 .paginator-controlers {
-  color: #fff;
-  text-align: center;
-  margin: 20px 0px;
+  color: #fff !important;
+  text-align: center !important;
+  margin: 20px 0px !important;
 }
