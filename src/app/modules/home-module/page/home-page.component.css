@@ -24,7 +24,7 @@ h3 {
   }
 }
 
-.container-slider {
+/* .container-slider {
   width: 95%;
   margin: auto;
   overflow: hidden;
@@ -74,7 +74,7 @@ h3 {
   100% {
     margin-left: -200%;
   }
-}
+} */
 
 .p-top {
   color: #fff;
